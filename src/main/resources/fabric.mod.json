@@ -3,18 +3,18 @@
 	"id": "biome_tag_villagers",
 	"version": "${version}",
 	"name": "Biome Tag Villagers",
-	"description": "Changes Villager Types to use Tags instead of just biomes!",
+	"description": "Changes Villager Types to use Tags instead of just Biomes!",
 	"authors": [
 		"TheEnderCore",
 		"Dusk"
 	],
 	"contact": {
-		"homepage": "https://github.com/theendercore/NarrusYeetus",
-		"issues": "https://github.com/theendercore/NarrusYeetus/issues",
-		"sources": "https://github.com/theendercore/NarrusYeetus",
+		"homepage": "https://github.com/theendercore/BiomeTagVillagers",
+		"issues": "https://github.com/theendercore/BiomeTagVillagers/issues",
+		"sources": "https://github.com/theendercore/BiomeTagVillagers",
 		"discord": "https://discord.gg/KZ5Q364hEg"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/biome_tag_villagers/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -27,10 +27,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.14.22",
-		"minecraft": "~1.20.1",
+		"minecraft": "1.20.x",
 		"java": ">=17"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
