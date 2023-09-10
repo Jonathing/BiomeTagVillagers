@@ -4,9 +4,10 @@ A mod that gives you control over how a villager will look in a biome via a set 
 ---
 A small server side mod that changes the current hard coded villager biomes to instead have the game read a set of tags
 to determine what variant a villager will be in what biome.
+If a biome is in multiple tag lists, it will randomize between the two.
 
 ### Dependencies
-none ([fabric](https://fabricmc.net/) not api)
+- Fabric api (Turns out you need this to run the mod initializer)
 
 ### Configuration
 The mod has only server side config in the format of tags. It adds 6 new tags for each villager type (eg. snowy, taiga,
