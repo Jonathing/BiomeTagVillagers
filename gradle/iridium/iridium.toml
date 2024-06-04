@@ -1,0 +1,24 @@
+projectTitle = "Biome Tag Villagers"
+modId = "biome_tag_villagers"
+githubRepo = "theendercore/BiomeTagVillagers"
+discordServerInviteId = "KZ5Q364hEg"
+authors = [ "TheEnderCore" ,"DuskAutumnStorm" ]
+majorMinecraftVersion = "1.20"
+minecraftVersion = "1.20.6"
+fabricLoaderVersion = "0.15.11"
+fabricApiVersion = "0.99.4+1.20.6"
+fabricLangKotlinVersion = "1.11.0+kotlin.2.0.0"
+license = "MIT"
+modules = [ ]
+
+[mappings]
+    # You have 7 mapping types
+    # MOJANG: The official Mojang mappings
+    # YARN: Yarn mappings
+    # PARCHMENT: Parchment mappings
+    # QUILT: Quilt mappings
+    # MOJPARCH: Parchment layered on top of the official Mojang mappings
+    # MOJYARN: Yarn layered on top of the official Mojang mappings
+    # CUSTOM: Custom mapping jar. Uses mappings version as file location
+    type = "YARN"
+    version = "1.20.6+build.3"

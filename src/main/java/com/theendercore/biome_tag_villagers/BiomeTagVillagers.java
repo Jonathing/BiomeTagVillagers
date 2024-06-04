@@ -19,7 +19,7 @@ import static net.minecraft.village.VillagerType.*;
 
 public class BiomeTagVillagers implements ModInitializer {
     public static final String MODID = "biome_tag_villagers";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
+    public static final Logger log = LoggerFactory.getLogger(MODID);
     public static final TagKey<Biome> VILLAGER_DESERT = of("villager_desert");
     public static final TagKey<Biome> VILLAGER_JUNGLE = of("villager_jungle");
     public static final TagKey<Biome> VILLAGER_SAVANNA = of("villager_savanna");
@@ -40,7 +40,7 @@ public class BiomeTagVillagers implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Tag time :gun:!");
+        log.info("Tag time :gun:!");
     }
 
     static void addType(TagKey<Biome> tag, VillagerType type) {
