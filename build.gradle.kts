@@ -84,7 +84,7 @@ tasks {
     }
 
     jar {
-//        exclude("com/theendercore/biome_tag_villagers/data/gen/*")
+        exclude("com/theendercore/biome_tag_villagers/data/gen/*")
     }
 }
 
