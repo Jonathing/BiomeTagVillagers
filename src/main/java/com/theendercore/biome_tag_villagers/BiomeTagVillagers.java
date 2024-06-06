@@ -37,21 +37,18 @@ public class BiomeTagVillagers implements ModInitializer {
                 map.put(VILLAGER_TAIGA, TAIGA);
             });
 
-
     @Override
     public void onInitialize() {
         log.info("Tag time :gun:!");
     }
-
+	@SuppressWarnings("unused")
     static void addType(TagKey<Biome> tag, VillagerType type) {
         BIOME_TAG_TO_TYPE.put(tag, type);
     }
     public static Map<TagKey<Biome>, VillagerType> getBiomeTagToType() {
         return BIOME_TAG_TO_TYPE;
     }
-
-
     private static TagKey<Biome> of(String id) {
-        return TagKey.of(RegistryKeys.BIOME, new Identifier(MODID, id));
+        return TagKey.of(RegistryKeys.BIOME, Identifier.of(MODID, id));
     }
 }
