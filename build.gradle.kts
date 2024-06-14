@@ -1,5 +1,6 @@
 @file:Suppress("PropertyName", "VariableNaming")
 
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -13,11 +14,8 @@ plugins {
 
 group = property("maven_group")!!
 version = property("mod_version")!!
-base.archivesName.set(property("archives_base_name") as String)
-description = property("description") as String
+base.archivesName.set(modSettings.modId())
 
-val modid: String by project
-val mod_name: String by project
 val modrinth_id: String? by project
 val curse_id: String? by project
 
@@ -28,14 +26,12 @@ repositories {
 }
 
 modSettings {
-    modId(modid)
-    modName(mod_name)
 
     entrypoint("main", "com.theendercore.biome_tag_villagers.BiomeTagVillagers")
     entrypoint("fabric-datagen", "com.theendercore.biome_tag_villagers.data.gen.BiomeTagVillagersData")
-    mixinFile("$modid.mixins.json")
+    mixinFile("${modId()}.mixins.json")
 
-//    accessWidener("$modid.accesswidener")
+//    accessWidener("${modId()}.accesswidener")
 }
 
 dependencies {
@@ -52,7 +48,7 @@ loom {
             ideConfigGenerated(true)
             vmArg("-Dfabric-api.datagen")
             vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
-            vmArg("-Dfabric-api.datagen.modid=${modid}")
+            vmArg("-Dfabric-api.datagen.modid=${modSettings.modId()}")
             runDir("build/datagen")
         }
 
@@ -75,7 +71,7 @@ tasks {
     }
 
     withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = targetJavaVersion.toString()
+        compilerOptions.jvmTarget = JvmTarget.JVM_21
     }
 
     java {
@@ -84,7 +80,12 @@ tasks {
     }
 
     jar {
-        exclude("com/theendercore/biome_tag_villagers/data/gen/*")
+        val valTaskNames = gradle.startParameter.taskNames
+        if (!valTaskNames.contains("runDataGen")) {
+            exclude("com/theendercore/biome_tag_villagers/data/gen/*")
+        } else {
+            println("Running datagen for task ${valTaskNames.joinToString(" ")}")
+        }
     }
 }
 
@@ -99,10 +100,11 @@ uploadConfig {
     modrinthId = modrinth_id
     curseId = curse_id
 
+    changeLog = "- 21 update"
     // FabricApi
     modrinthDependency("P7dR8mSH", uploadConfig.REQUIRED)
     curseDependency("fabric-api", uploadConfig.REQUIRED)
     // Fabric Language Kotlin
-    modrinthDependency("Ha28R6CL", uploadConfig.REQUIRED)
-    curseDependency("fabric-language-kotlin", uploadConfig.REQUIRED)
+//    modrinthDependency("Ha28R6CL", uploadConfig.REQUIRED)
+//    curseDependency("fabric-language-kotlin", uploadConfig.REQUIRED)
 }
