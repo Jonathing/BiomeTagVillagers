@@ -1,23 +1,27 @@
 package com.theendercore.biome_tag_villagers;
 
 import com.google.common.collect.Maps;
-import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
-import net.minecraft.village.VillagerType;
-import net.minecraft.world.biome.Biome;
+import com.theendercore.biome_tag_villagers.data.gen.BiomeTagVillagersData;
+import net.minecraft.Util;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.npc.VillagerType;
+import net.minecraft.world.level.biome.Biome;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spongepowered.asm.mixin.Unique;
 
 import java.util.Map;
 
-import static net.minecraft.village.VillagerType.*;
+import static net.minecraft.world.entity.npc.VillagerType.*;
 
-public class BiomeTagVillagers implements ModInitializer {
+@Mod(BiomeTagVillagers.MODID)
+public class BiomeTagVillagers {
     public static final String MODID = "biome_tag_villagers";
     public static final Logger log = LoggerFactory.getLogger(MODID);
     public static final TagKey<Biome> VILLAGER_DESERT = of("villager_desert");
@@ -37,9 +41,10 @@ public class BiomeTagVillagers implements ModInitializer {
                 map.put(VILLAGER_TAIGA, TAIGA);
             });
 
-    @Override
-    public void onInitialize() {
+    public BiomeTagVillagers(IEventBus eventBus, ModContainer container) {
         log.info("Tag time :gun:!");
+
+        eventBus.addListener(BiomeTagVillagersData::onInitializeDataGenerator);
     }
 	@SuppressWarnings("unused")
     static void addType(TagKey<Biome> tag, VillagerType type) {
@@ -49,6 +54,6 @@ public class BiomeTagVillagers implements ModInitializer {
         return BIOME_TAG_TO_TYPE;
     }
     private static TagKey<Biome> of(String id) {
-        return TagKey.of(RegistryKeys.BIOME, Identifier.of(MODID, id));
+        return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(MODID, id));
     }
 }
