@@ -1,0 +1,7 @@
+// 1.21	2024-06-19T15:20:36.485260241	Tags for minecraft:worldgen/biome mod id biome_tag_villagers
+acd14e74fab890a42c42dde5c948eb397eccaab5 data/biome_tag_villagers/tags/worldgen/biome/villager_desert.json
+1d55208258c7814c4d08871f414fc4881a47600d data/biome_tag_villagers/tags/worldgen/biome/villager_jungle.json
+1cd8ac8b4f64a360a8490205bfb452b25b61d9a1 data/biome_tag_villagers/tags/worldgen/biome/villager_savanna.json
+2e9a59a7692bafa69fb180f93531f83c018819f0 data/biome_tag_villagers/tags/worldgen/biome/villager_snowy.json
+9e2b7b8df3fb20d96903d0086722adf15e71fb38 data/biome_tag_villagers/tags/worldgen/biome/villager_swamp.json
+4d7a57cef235d0c3489f7797695b4d620cd56ba9 data/biome_tag_villagers/tags/worldgen/biome/villager_taiga.json
